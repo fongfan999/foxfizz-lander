@@ -299,7 +299,7 @@
       $('.scrollspy').scrollSpy({scrollOffset: 0});
 
       var tabsFixed = $('#tabs-fixed');
-      tabsFixed.css('top', ($( window ).height() - tabsFixed.offset().top)/2);
+      tabsFixed.css('top', ($( window ).height() - tabsFixed.height())/2);
       // End Scroll Spy
 
       // Scroll Fire
@@ -314,6 +314,7 @@
       Materialize.scrollFire(options);
       // End Scroll Fire
 
+      // Minimize navbar while scrolling down
       function defaultScollTopProperties() {
         $("#nav-wrapper").css({
           'background-color': 'transparent',
@@ -342,7 +343,6 @@
           'margin-top': '-40px'
         });
       }
-
 
       function onLargeScrollTopProperties() {
         defaultScollTopProperties();
@@ -393,7 +393,6 @@
         });
       }
 
-
       function applyProperties() {
         var windowWidth = $(window).width();
         var scrollPosition = $(this).scrollTop();
@@ -401,8 +400,6 @@
         if (windowWidth > 992) {
 
           if (scrollPosition == 0) {
-            console.log(windowWidth);
-            console.log(scrollPosition);
             onLargeScrollTopProperties();
           } else {
             onLargeScrollBottomProperties();
@@ -419,12 +416,6 @@
         }
       }
 
-      // function showNavOnScroll() {
-      //   $(window).scroll(function () {
-      //     applyProperties();
-      //   });
-      // }
-
       function initializeScrollNav() {
         applyProperties();
 
@@ -436,11 +427,6 @@
       initializeScrollNav();
 
       $(window).resize(initializeScrollNav);
-
-
-      
-
-
     });
   </script>
 </body>
